@@ -3,6 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Calendar, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 import { clinicService } from '../services/clinicService';
 
+// Local anatomy imagery from src/assets
+import spineImg from '../assets/Spine & Lumbar Sciatica.jpg';
+import shoulderImg from '../assets/Shoulder & Rotator Cuff.jpg';
+import kneeImg from '../assets/Knee & ACL Rehabilitation.jpg';
+import cervicalImg from '../assets/Neck & Cervical Spine.jpg';
+import hipImg from '../assets/Hip & Pelvic Alignment.jpg';
+import ankleImg from '../assets/Ankle & Sports Tendonitis.jpg';
+
 interface AnatomyInteractive3DProps {
   onNavigate: (path: string, serviceId?: string) => void;
 }
@@ -29,7 +37,7 @@ export const AnatomyInteractive3D: React.FC<AnatomyInteractive3DProps> = ({ onNa
       serviceId: 'serv-3',
       category: 'Spine & Sciatica',
       description: 'Focused therapeutic decompression targeting herniated discs, chronic sciatica, lumbar instability, and postural strain.',
-      imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
+      imageUrl: spineImg,
       symptoms: ['Radiating leg pain', 'L4-L5 stiffness', 'Lower back tightness', 'Herniated disc discomfort'],
       xPercent: 50,
       yPercent: 48,
@@ -40,7 +48,7 @@ export const AnatomyInteractive3D: React.FC<AnatomyInteractive3DProps> = ({ onNa
       serviceId: 'serv-2',
       category: 'Shoulder Therapy',
       description: 'Joint mobilization, dry needling, and targeted rotator cuff stabilization for impingement and overhead pain.',
-      imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+      imageUrl: shoulderImg,
       symptoms: ['Impingement during lift', 'Rotator cuff strain', 'Frozen shoulder stiffness', 'Clavicle tension'],
       xPercent: 34,
       yPercent: 28,
@@ -51,7 +59,7 @@ export const AnatomyInteractive3D: React.FC<AnatomyInteractive3DProps> = ({ onNa
       serviceId: 'serv-4',
       category: 'Knee & Joint Rehab',
       description: 'Evidence-based protocol for post-op ACL repairs, meniscus procedures, patellar tracking, and knee joint swelling.',
-      imageUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800',
+      imageUrl: kneeImg,
       symptoms: ['Post-ACL surgical recovery', 'Meniscus tear strain', 'Patellar tendonitis', 'Joint pop & instability'],
       xPercent: 44,
       yPercent: 72,
@@ -62,7 +70,7 @@ export const AnatomyInteractive3D: React.FC<AnatomyInteractive3DProps> = ({ onNa
       serviceId: 'serv-3',
       category: 'Neck & Cervical',
       description: 'Manual cervical traction, myofascial release, and upper back posture restoration for neck tension and whiplash.',
-      imageUrl: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=800',
+      imageUrl: cervicalImg,
       symptoms: ['Cervical stiffness', 'Frequent tension headaches', 'Trapezius knots', 'Desk posture strain'],
       xPercent: 50,
       yPercent: 20,
@@ -73,7 +81,7 @@ export const AnatomyInteractive3D: React.FC<AnatomyInteractive3DProps> = ({ onNa
       serviceId: 'serv-1',
       category: 'Hip Biomechanics',
       description: 'Comprehensive pelvic tilt analysis, hip joint mobilization, and deep glute/piriformis dry needling.',
-      imageUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=800',
+      imageUrl: hipImg,
       symptoms: ['Piriformis tightness', 'Hip flexor strain', 'Pelvic rotation imbalance', 'Groin discomfort'],
       xPercent: 56,
       yPercent: 54,
@@ -84,7 +92,7 @@ export const AnatomyInteractive3D: React.FC<AnatomyInteractive3DProps> = ({ onNa
       serviceId: 'serv-2',
       category: 'Sports Injury',
       description: 'Rapid recovery therapy for Achilles tendonitis, recurring ankle sprains, plantar fasciitis, and shin splints.',
-      imageUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=800',
+      imageUrl: ankleImg,
       symptoms: ['Achilles pain', 'Plantar fasciitis heel pain', 'Lateral ankle sprain', 'Shin splints'],
       xPercent: 58,
       yPercent: 88,
@@ -192,7 +200,7 @@ export const AnatomyInteractive3D: React.FC<AnatomyInteractive3DProps> = ({ onNa
             </div>
           </div>
 
-          {/* Active Zone Detail Card & High-Res Treatment Photo */}
+          {/* Active Zone Detail Card & High-Res Anatomical Asset Photo */}
           <div className="lg:col-span-6 space-y-6">
             <AnimatePresence mode="wait">
               <motion.div
@@ -214,7 +222,7 @@ export const AnatomyInteractive3D: React.FC<AnatomyInteractive3DProps> = ({ onNa
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-darkpine-950 via-transparent to-transparent"></div>
                   <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-darkpine-950/80 backdrop-blur-md text-[11px] font-bold text-ochre-400 border border-pine-800">
-                    📍 Clinical Treatment Focus
+                    📍 {selectedZone.name} Photo
                   </div>
                 </div>
 
