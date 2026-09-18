@@ -8,6 +8,7 @@ import { TreatmentJourney } from '../components/TreatmentJourney';
 import { WhyChooseUs } from '../components/WhyChooseUs';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { HealthBlogSection } from '../components/HealthBlogSection';
+import { CinematicSection } from '../components/CinematicSection';
 
 interface HomeProps {
   onNavigate: (path: string, serviceId?: string) => void;
@@ -47,7 +48,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <div className="space-y-16 pb-20">
       
-      {/* 1. CINEMATIC HERO SECTION WITH 3D CANVAS */}
+      {/* 1. HERO SECTION WITH 3D CANVAS */}
       <section className="relative overflow-hidden pt-6 pb-14 lg:pt-12 lg:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
@@ -69,6 +70,15 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 Targeted Recovery & <br />
                 <span className="text-gradient-ochre font-serif italic">Restored Mobility</span>
               </h1>
+
+              {/* Sequential Word Reveal Tagline */}
+              <div className="flex items-center gap-3 text-xs sm:text-sm font-bold uppercase tracking-widest text-ochre-600 dark:text-ochre-400">
+                <span>Move Better.</span>
+                <span>•</span>
+                <span>Feel Stronger.</span>
+                <span>•</span>
+                <span>Live Fully.</span>
+              </div>
 
               <p className="text-base sm:text-lg text-pine-800 dark:text-parchment-200 leading-relaxed max-w-2xl">
                 Get direct, 1-on-1 care from <strong className="font-semibold text-pine-950 dark:text-parchment-50">{profile.name}</strong>. 
@@ -161,7 +171,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* 2. 3D INTERACTIVE ANATOMY SECTION */}
       <AnatomyInteractive3D onNavigate={onNavigate} />
 
-      {/* 3. PRACTITIONER BIO & CLINIC CREDENTIALS */}
+      {/* 3. FULL-WIDTH CINEMATIC PARALLAX SECTION */}
+      <CinematicSection onNavigate={onNavigate} />
+
+      {/* 4. PRACTITIONER BIO & CLINIC CREDENTIALS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -253,19 +266,19 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </motion.div>
       </section>
 
-      {/* 4. TREATMENT JOURNEY */}
+      {/* 5. TREATMENT JOURNEY */}
       <TreatmentJourney />
 
-      {/* 5. WHY CHOOSE US */}
+      {/* 6. WHY CHOOSE US */}
       <WhyChooseUs />
 
-      {/* 6. TESTIMONIALS CAROUSEL */}
+      {/* 7. TESTIMONIALS CAROUSEL */}
       <TestimonialsCarousel />
 
-      {/* 7. HEALTH EDUCATION ARTICLES */}
+      {/* 8. HEALTH EDUCATION ARTICLES */}
       <HealthBlogSection />
 
-      {/* 8. BOTTOM FINAL CTA BANNER */}
+      {/* 9. BOTTOM FINAL CTA BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, scale: 0.96 }}

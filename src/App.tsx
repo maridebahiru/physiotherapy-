@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { ScrollProgress } from './components/ScrollProgress';
 import { Home } from './pages/Home';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
@@ -66,7 +67,8 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-parchment-50 dark:bg-darkpine-950 text-pine-950 dark:text-parchment-100 font-sans selection:bg-ochre-500 selection:text-white transition-colors duration-200 overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-parchment-50 dark:bg-darkpine-950 text-pine-950 dark:text-parchment-100 font-sans selection:bg-ochre-500 selection:text-white transition-colors duration-200 overflow-x-hidden relative">
+      <ScrollProgress />
       <Navbar currentPath={currentPath} onNavigate={navigateTo} />
       
       <main className="flex-grow">
