@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Services collection: Public read, Admin write
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Availability collection: Public read, Admin write
+    match /availability/{dayId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Time Blocks collection: Public read, Admin write
+    match /timeBlocks/{blockId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Bookings collection: Public create, Admin full access (read/update/delete)
+    match /bookings/{bookingId} {
+      allow create: if request.resource.data.patientName != null &&
+                      request.resource.data.phone != null &&
+                      request.resource.data.serviceId != null &&
+                      request.resource.data.date != null &&
+                      request.resource.data.startTime != null;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Admins collection: Strictly Admin access only
+    match /admins/{adminUid} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
